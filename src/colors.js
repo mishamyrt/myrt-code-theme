@@ -1,51 +1,104 @@
-const lightColors = require("@primer/primitives/dist/json/colors/light.json");
-const lightHighContrastColors = require("@primer/primitives/dist/json/colors/light_high_contrast.json");
-const lightColorblindColors = require("@primer/primitives/dist/json/colors/light_colorblind.json");
-const darkColors = require("@primer/primitives/dist/json/colors/dark.json");
-const darkHighContrastColors = require("@primer/primitives/dist/json/colors/dark_high_contrast.json");
-const darkColorblindColors = require("@primer/primitives/dist/json/colors/dark_colorblind.json");
-const dimmedColors = require("@primer/primitives/dist/json/colors/dark_dimmed.json");
-
-function getColors(theme) {
-
-  switch(theme) {
-    case "light":
-
-      // Temp override until Primitives are updated
-      lightColors.success.emphasis = "#1f883d";
-      lightColors.btn.primary.bg = lightColors.success.emphasis;
-      lightColors.btn.primary.hoverBg = lightColors.scale.green[5];
-      lightColors.fg.default = "#1f2328";
-      lightColors.fg.muted = "#656d76";
-
-      return lightColors;
-    case "light_high_contrast":
-      return lightHighContrastColors;
-    case "light_colorblind":
-        return lightColorblindColors;
-    case "dark":
-
-      // Temp override until Primitives are updated
-      darkColors.fg.default = "#e6edf3";
-      darkColors.fg.muted = "#7d8590";
-      darkColors.accent.fg = "#2f81f7";
-      darkColors.severe.subtle = "rgba(219, 109, 40, 0.1)";
-      darkColors.danger.subtle = "rgba(248, 81, 73, 0.1)";
-      darkColors.done.subtle = "rgba(163, 113, 247, 0.1)";
-      darkColors.sponsors.subtle = "rgba(219, 97, 162, 0.1)";
-
-      return darkColors;
-    case "dark_high_contrast":
-      return darkHighContrastColors;
-    case "dark_colorblind":
-      return darkColorblindColors;
-    case "dark_dimmed":
-      return dimmedColors;
-    default:
-      throw new Error(`Colors are missing for value: ${theme}`);
-  }
-}
+const colors = {
+  black: "#1b1f23",
+  white: "#fff",
+  gray: [
+    "#fafbfc",
+    "#f6f8fa",
+    "#e1e4e8",
+    "#d1d5da",
+    "#959da5",
+    "#6a737d",
+    "#586069",
+    "#444d56",
+    "#2f363d",
+    "#24292e",
+  ],
+  blue: [
+    "#f1f8ff",
+    "#dbedff",
+    "#c8e1ff",
+    "#79b8ff",
+    "#2188ff",
+    "#0366d6",
+    "#005cc5",
+    "#044289",
+    "#032f62",
+    "#05264c",
+  ],
+  green: [
+    "#f0fff4",
+    "#dcffe4",
+    "#bef5cb",
+    "#85e89d",
+    "#34d058",
+    "#28a745",
+    "#22863a",
+    "#176f2c",
+    "#165c26",
+    "#144620",
+  ],
+  yellow: [
+    "#fffdef",
+    "#fffbdd",
+    "#fff5b1",
+    "#ffea7f",
+    "#ffdf5d",
+    "#ffd33d",
+    "#f9c513",
+    "#dbab09",
+    "#b08800",
+    "#735c0f",
+  ],
+  orange: [
+    "#fff8f2",
+    "#ffebda",
+    "#ffd1ac",
+    "#ffab70",
+    "#fb8532",
+    "#f66a0a",
+    "#e36209",
+    "#d15704",
+    "#c24e00",
+    "#a04100",
+  ],
+  red: [
+    "#ffeef0",
+    "#ffdce0",
+    "#fdaeb7",
+    "#f97583",
+    "#ea4a5a",
+    "#d73a49",
+    "#cb2431",
+    "#b31d28",
+    "#9e1c23",
+    "#86181d",
+  ],
+  purple: [
+    "#f5f0ff",
+    "#e6dcfd",
+    "#d1bcf9",
+    "#b392f0",
+    "#8a63d2",
+    "#6f42c1",
+    "#5a32a3",
+    "#4c2889",
+    "#3a1d6e",
+    "#29134e",
+  ],
+  pink: [
+    "#ffeef8",
+    "#fedbf0",
+    "#f9b3dd",
+    "#f692ce",
+    "#ec6cb9",
+    "#ea4aaa",
+    "#d03592",
+    "#b93a86",
+    "#99306f",
+    "#6d224f",
+  ],
+};
 
 module.exports = {
-  getColors,
+  colors,
 };

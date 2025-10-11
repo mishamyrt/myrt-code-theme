@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "*.phtml": "php",
+        "*.css": "scss",
+        "*.html": "html",
+        "*.cls": "fea",
+        "*.nugafile": "json",
+        "ranges": "cpp",
+        "vector": "cpp",
+        "iostream": "cpp",
+        "optional": "cpp"
+    }
+}

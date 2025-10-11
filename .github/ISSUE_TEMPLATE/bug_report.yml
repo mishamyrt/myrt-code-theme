@@ -33,8 +33,8 @@ body:
     id: version
     attributes:
       label: Version
-      description: 'What version of `github-vscode-theme` are you using?'
-      placeholder: v6.3.2
+      description: 'What version of `myrt-vscode-theme` are you using?'
+      placeholder: v0.1.0
     validations:
       required: true
   - type: dropdown
@@ -44,12 +44,5 @@ body:
       description: In which themes(s) are you experiencing the issue?
       multiple: true
       options:
-        - GitHub Light Default
-        - GitHub Light High Contrast
-        - GitHub Light Colorblind
-        - GitHub Light
-        - GitHub Dark Default
-        - GitHub Dark High Contrast
-        - GitHub Dark Colorblind
-        - GitHub Dark Dimmed
-        - GitHub Dark
+        - Myrt Light
+        - Myrt Dark

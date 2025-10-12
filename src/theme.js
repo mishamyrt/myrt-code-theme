@@ -612,7 +612,12 @@ function getTheme({ style, name }) {
         },
       },
       {
-        scope: ["storage", "storage.type"],
+        scope: [
+            "storage.js",
+            "storage.ts",
+            "storage.type",
+            "keyword.type.go"
+        ],
         settings: {
           fontStyle: "italic",
           foreground: pick({ light: colors.red[5], dark: colors.red[6] }),

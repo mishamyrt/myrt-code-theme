@@ -911,7 +911,11 @@ function getTheme({ style, name }) {
         },
       },
       {
-        scope: ["storage.type.built-in"],
+        scope: [
+            "storage.type.built-in",
+            "storage.type.numeric",
+            "source.go storage.type"
+        ],
         settings: {
           foreground: colors.blue[6],
           fontStyle: "regular",

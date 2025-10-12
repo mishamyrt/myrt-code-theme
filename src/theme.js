@@ -523,10 +523,7 @@ function getTheme({ style, name }) {
       },
       {
         name: "De-italic JSDoc variable",
-        scope: [
-            "entity.name.type.instance.jsdoc",
-            "variable.other.jsdoc"
-        ],
+        scope: ["entity.name.type.instance.jsdoc", "variable.other.jsdoc"],
         settings: {
           fontStyle: "regular",
         },
@@ -613,10 +610,12 @@ function getTheme({ style, name }) {
       },
       {
         scope: [
-            "storage.js",
-            "storage.ts",
-            "storage.type",
-            "keyword.type.go"
+          "storage.js",
+          "storage.ts",
+          "storage.type",
+          "keyword.type.go",
+          "keyword.control",
+          "source.cpp keyword.other",
         ],
         settings: {
           fontStyle: "italic",
@@ -823,6 +822,7 @@ function getTheme({ style, name }) {
       {
         scope: [
           // "entity.name.type.rust",
+          "source.js entity.name.type",
           "entity.name.type",
         ],
         settings: {
@@ -908,6 +908,19 @@ function getTheme({ style, name }) {
         ],
         settings: {
           foreground: colors.gray[5],
+        },
+      },
+      {
+        scope: ["storage.type.built-in"],
+        settings: {
+          foreground: colors.blue[6],
+          fontStyle: "regular",
+        },
+      },
+      {
+        scope: "storage.modifier.reference",
+        settings: {
+          fontStyle: "regular",
         },
       },
       {
@@ -1168,6 +1181,7 @@ function getTheme({ style, name }) {
           "source.json meta.mapping.key string.quoted.single.json punctuation.definition.string.begin",
           "source.json meta.mapping.key string.quoted.single.json punctuation.definition.string.end",
           "support.type.property-name.json punctuation.definition.string",
+          "punctuation.section.angle-brackets"
         ],
         settings: {
           foreground: pick({ light: colors.gray[5], dark: colors.gray[4] }),

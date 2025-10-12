@@ -1012,9 +1012,14 @@ function getTheme({ style, name }) {
         },
       },
       {
-        scope: ["entity.name.function.operator"],
+        scope: [
+            "entity.name.function.operator",
+            "keyword.function",
+            "keyword.package"
+        ],
         settings: {
           foreground: pick({ light: colors.red[5], dark: colors.red[6] }),
+          fontStyle: "italic",
         },
       },
       {

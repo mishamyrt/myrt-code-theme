@@ -522,6 +522,22 @@ function getTheme({ style, name }) {
         },
       },
       {
+        name: "De-italic JSDoc variable",
+        scope: [
+            "entity.name.type.instance.jsdoc",
+            "variable.other.jsdoc"
+        ],
+        settings: {
+          fontStyle: "regular",
+        },
+      },
+      {
+        scope: "entity.name.type.instance.jsdoc",
+        settings: {
+          foreground: colors.blue[6],
+        },
+      },
+      {
         scope: "variable.other",
         settings: {
           foreground: editorForeground,

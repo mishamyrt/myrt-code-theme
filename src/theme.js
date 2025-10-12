@@ -541,7 +541,10 @@ function getTheme({ style, name }) {
         },
       },
       {
-        scope: "meta.decorator",
+        scope: [
+            "meta.decorator",
+            "entity.name.decorator",
+        ],
         settings: {
           foreground: pick({ light: colors.purple[5], dark: colors.purple[6] }),
         },

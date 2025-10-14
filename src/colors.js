@@ -76,7 +76,7 @@ const colors = {
   purple: [
     "#f5f0ff",
     "#e6dcfd",
-    "#d1bcf9",
+    "#d0b7ff",
     "#b392f0",
     "#8a63d2",
     "#6f42c1",

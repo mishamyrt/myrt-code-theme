@@ -616,9 +616,12 @@ function getTheme({ style, name }) {
           "storage.js",
           "storage.ts",
           "storage.type",
+        //   "entity.name.type.struct.rust",
           "keyword.type.go",
           "keyword.control",
           "source.cpp keyword.other",
+          "variable.language.self.rust",
+          "source.rust keyword.other"
         ],
         settings: {
           fontStyle: "italic",
@@ -815,21 +818,16 @@ function getTheme({ style, name }) {
           foreground: colors.blue[8],
         },
       },
-      {
-        scope: "entity.name.type -alias",
-        settings: {
-          foreground: colors.purple[6],
-        },
-      },
       // --- Language-specific overrides (batch 1) ---
       {
         scope: [
-          // "entity.name.type.rust",
+          "entity.name.type.rust",
+        //   "entity.name.namespace",
           "source.js entity.name.type",
           "entity.name.type",
         ],
         settings: {
-          foreground: pick({ light: colors.purple[5], dark: colors.purple[6] }),
+          foreground: colors.blue[6],
         },
       },
       {
@@ -1235,6 +1233,7 @@ function getTheme({ style, name }) {
           foreground: colors.red[7],
         },
       },
+      
       {
         scope: ["constant.other.reference.link", "string.other.link"],
         settings: {
@@ -1242,7 +1241,49 @@ function getTheme({ style, name }) {
           fontStyle: "underline",
         },
       },
+      {
+        scope: "entity.name.type.class",
+        settings: {
+          foreground: colors.blue[6],
+        },
+      },
+      {
+        scope: "meta.function.definition.rust variable.other",
+        settings: {
+          foreground: colors.orange[6],
+        },
+      },
+      {
+        scope: "meta.attribute.rust",
+        settings: {
+          foreground: colors.gray[6],
+        },
+      },
+      {
+        scope: [
+            "meta.type.parameters.ts entity.name.type.parameter",
+            "entity.name.type.ts"
+        ],
+        settings: {
+          foreground: colors.orange[6],
+        },
+      },
+      {
+        scope: "keyword.other.crate.rust",
+        settings: {
+            foreground: colors.red[6]
+        }
+      },
+      {
+        scope: "meta.function.call.rust variable.other",
+        settings: {
+            foreground: colors.purple[6]
+        }
+      }
     ],
+    semanticTokenColors: {
+        'typeParameter': colors.orange[6]
+    }
   };
 }
 

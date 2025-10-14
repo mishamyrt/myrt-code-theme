@@ -43,24 +43,32 @@
         "uiTheme": "vs-dark",
         "path": "./themes/dark.json"
       }
+    ],
+    "commands": [
+      {
+        "command": "myrtcode.checkTheme",
+        "title": "Check Current Theme"
+      }
     ]
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.1",
     "@changesets/cli": "^2.17.0",
-    "@primer/primitives": "7.10.0",
-    "chroma-js": "^2.1.2",
-    "color": "^3.1.2",
+    "chroma-js": "3.1.2",
     "nodemon": "^2.0.3",
-    "vsce": "^1.100.1"
+    "vsce": "^2.15.0"
   },
   "scripts": {
     "start": "nodemon --watch src src/index.js",
     "build": "node src/index.js && mkdir -p build",
-    "package": "vsce package -o ./build/myrt-vscode-theme.vsix",
+    "package": "vsce package --allow-star-activation -o ./build/myrt-vscode-theme.vsix",
     "prepublishOnly": "npm run build && vsce publish",
     "release": "changeset publish"
   },
+  "main": "./extension.js",
+  "activationEvents": [
+    "*"
+  ],
   "publishConfig": {
     "access": "public"
   }

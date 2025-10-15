@@ -370,8 +370,11 @@ function getTheme({ style, name }) {
         light: "#d73a4922",
         dark: "#d73a4930",
       }),
-
-      "scrollbar.shadow": pick({ light: "#6a737d33", dark: "#0008" }),
+      "scrollbar.shadow": colors.gray[0],
+      "editorStickyScroll.background": colors.gray[0],
+      "editorStickyScroll.border": colors.gray[1],
+      "editorStickyScroll.shadow": colors.gray[0],
+      "editorStickyScrollHover.background": colors.gray[1],
       "scrollbarSlider.background": pick({
         light: "#959da533",
         dark: "#6a737d33",
@@ -541,10 +544,7 @@ function getTheme({ style, name }) {
         },
       },
       {
-        scope: [
-            "meta.decorator",
-            "entity.name.decorator",
-        ],
+        scope: ["meta.decorator", "entity.name.decorator"],
         settings: {
           foreground: pick({ light: colors.purple[5], dark: colors.purple[6] }),
         },
@@ -616,12 +616,12 @@ function getTheme({ style, name }) {
           "storage.js",
           "storage.ts",
           "storage.type",
-        //   "entity.name.type.struct.rust",
+          //   "entity.name.type.struct.rust",
           "keyword.type.go",
           "keyword.control",
           "source.cpp keyword.other",
           "variable.language.self.rust",
-          "source.rust keyword.other"
+          "source.rust keyword.other",
         ],
         settings: {
           fontStyle: "italic",
@@ -822,7 +822,7 @@ function getTheme({ style, name }) {
       {
         scope: [
           "entity.name.type.rust",
-        //   "entity.name.namespace",
+          //   "entity.name.namespace",
           "source.js entity.name.type",
           "entity.name.type",
         ],
@@ -913,9 +913,9 @@ function getTheme({ style, name }) {
       },
       {
         scope: [
-            "storage.type.built-in",
-            "storage.type.numeric",
-            "source.go storage.type"
+          "storage.type.built-in",
+          "storage.type.numeric",
+          "source.go storage.type",
         ],
         settings: {
           foreground: colors.blue[6],
@@ -1011,9 +1011,9 @@ function getTheme({ style, name }) {
       },
       {
         scope: [
-            "entity.name.function.operator",
-            "keyword.function",
-            "keyword.package"
+          "entity.name.function.operator",
+          "keyword.function",
+          "keyword.package",
         ],
         settings: {
           foreground: pick({ light: colors.red[5], dark: colors.red[6] }),
@@ -1191,7 +1191,7 @@ function getTheme({ style, name }) {
           "source.json meta.mapping.key string.quoted.single.json punctuation.definition.string.begin",
           "source.json meta.mapping.key string.quoted.single.json punctuation.definition.string.end",
           "support.type.property-name.json punctuation.definition.string",
-          "punctuation.section.angle-brackets"
+          "punctuation.section.angle-brackets",
         ],
         settings: {
           foreground: pick({ light: colors.gray[5], dark: colors.gray[4] }),
@@ -1233,7 +1233,7 @@ function getTheme({ style, name }) {
           foreground: colors.red[7],
         },
       },
-      
+
       {
         scope: ["constant.other.reference.link", "string.other.link"],
         settings: {
@@ -1261,8 +1261,8 @@ function getTheme({ style, name }) {
       },
       {
         scope: [
-            "meta.type.parameters.ts entity.name.type.parameter",
-            "entity.name.type.ts"
+          "meta.type.parameters.ts entity.name.type.parameter",
+          "entity.name.type.ts",
         ],
         settings: {
           foreground: colors.orange[6],
@@ -1271,19 +1271,19 @@ function getTheme({ style, name }) {
       {
         scope: "keyword.other.crate.rust",
         settings: {
-            foreground: colors.red[6]
-        }
+          foreground: colors.red[6],
+        },
       },
       {
         scope: "meta.function.call.rust variable.other",
         settings: {
-            foreground: colors.purple[6]
-        }
-      }
+          foreground: colors.purple[6],
+        },
+      },
     ],
     semanticTokenColors: {
-        'typeParameter': colors.orange[6]
-    }
+      typeParameter: colors.orange[6],
+    },
   };
 }
 

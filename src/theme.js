@@ -674,6 +674,7 @@ function getTheme({ style, name }) {
           "punctuation.section.embedded.end",
           "punctuation.section.embedded.begin",
           "punctuation.definition.typeparameters",
+          "punctuation.separator.comma",
         ],
         settings: {
           foreground: pick({ light: colors.gray[5], dark: colors.gray[4] }),

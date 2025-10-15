@@ -1,9 +1,9 @@
 {
   "name": "myrt-vscode-theme",
-  "displayName": "MyrtCode Theme",
-  "description": "MyrtCode theme for VS Code",
-  "version": "6.3.5",
-  "publisher": "GitHub",
+  "displayName": "Myrt Theme",
+  "description": "Myrt theme for VS Code",
+  "version": "0.1.0",
+  "publisher": "Mikhael Khrustik",
   "license": "MIT",
   "icon": "icon.png",
   "galleryBanner": {
@@ -12,10 +12,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/primer/github-vscode-theme"
+    "url": "https://github.com/mishamyrt/myrt-vscode-theme"
   },
   "bugs": {
-    "url": "https://github.com/primer/github-vscode-theme/issues"
+    "url": "https://github.com/mishamyrt/myrt-vscode-theme/issues"
   },
   "engines": {
     "vscode": "^1.43.0"
@@ -27,27 +27,19 @@
     "theme",
     "myrt",
     "light",
-    "dark",
-    "protanopia",
-    "colorblind"
+    "dark"
   ],
   "contributes": {
     "themes": [
       {
-        "label": "MyrtCode Light",
+        "label": "Myrt Light",
         "uiTheme": "vs",
         "path": "./themes/light.json"
       },
       {
-        "label": "MyrtCode Dark",
+        "label": "Myrt Dark",
         "uiTheme": "vs-dark",
         "path": "./themes/dark.json"
-      }
-    ],
-    "commands": [
-      {
-        "command": "myrtcode.checkTheme",
-        "title": "Check Current Theme"
       }
     ]
   },

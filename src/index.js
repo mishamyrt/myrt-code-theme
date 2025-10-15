@@ -5,12 +5,12 @@ const stringify = (obj) => JSON.stringify(obj, null, 2);
 
 const lightTheme = getTheme({
   style: "light",
-  name: "MyrtCode Light",
+  name: "Myrt Light",
 });
 
 const darkTheme = getTheme({
   style: "dark",
-  name: "MyrtCode Dark",
+  name: "Myrt Dark",
 });
 
 fs.mkdir("./themes", { recursive: true })

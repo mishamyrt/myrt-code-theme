@@ -5,3 +5,4 @@ package-lock.json
 build
 *.vsix
 testdata/
+/extension.js

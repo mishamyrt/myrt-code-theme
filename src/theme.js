@@ -147,6 +147,14 @@ function getTheme({ style, name }) {
         light: colors.gray[2],
         dark: colors.white,
       }),
+      "sideBarStickyScroll.border": pick({
+        light: colors.gray[2],
+        dark: colors.gray[2],
+      }),
+      "sideBarStickyScroll.shadow": pick({
+        light: colors.gray[1],
+        dark: "#1f2428",
+      }),
 
       "list.hoverForeground": workbenchForeground,
       "list.inactiveSelectionForeground": workbenchForeground,

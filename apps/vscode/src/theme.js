@@ -546,9 +546,26 @@ function getTheme({ style, name }) {
           "punctuation.definition.typeparameters",
           "punctuation.separator.comma",
           "punctuation.definition.table.inline.toml",
+          "punctuation.definition.markdown"
         ],
         settings: {
           foreground: tokens.syntax.punctuation,
+        },
+      },
+      {
+        scope: "punctuation.definition.heading",
+        settings: {
+            fontStyle: "regular",
+            foreground: tokens.syntax.punctuation,
+        },
+      },
+      {
+        scope: "markup.fenced_code.block.markdown",
+        settings: {
+            foreground: pick({
+                light: colors.gray[7],
+                dark: colors.gray[6],
+            }),
         },
       },
       {

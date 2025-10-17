@@ -22,6 +22,21 @@
 6. Run `pnpm build` to update the theme. You can also run `pnpm start` instead to automatically rebuild the theme while making changes and no reloading should be necessary.
 7. Once you're happy, commit your changes and open a PR.
 
+## Palette and semantic tokens
+
+As of latest refactor, colors are defined in `src/colors.js` and consumed as a style-resolved palette via:
+
+```js
+const { getPalette } = require("./src/colors");
+const { tokens, scale, fn } = getPalette("light" /* or "dark" */);
+```
+
+- `tokens`: minimal deduplicated semantic tokens (top-level aliases and grouped namespaces like `ui`, `brand`, `component`).
+- `scale`: preserved color scales for rare shade-index access (e.g., `scale.gray[2]`).
+- `fn`: helpers like `variant(hex)` (light/dark inversion) and `alpha(hex, a)`.
+
+In `src/theme.js`, prefer tokens over raw indices; use `scale.*[i]` only when a very specific shade is intended.
+
 ## Publish (internal)
 
 > Note: Publishing a new version of this theme is only meant for maintainers.

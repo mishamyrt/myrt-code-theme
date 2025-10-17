@@ -1,4 +1,4 @@
-const { colors } = require("./colors");
+const { getPalette, colors } = require("./colors");
 const chroma = require("chroma-js");
 
 /**
@@ -37,22 +37,8 @@ function getVariant(hex, style) {
  * @returns {typeof colors} The colors for the given style
  */
 function getColors(style) {
-  if (style === "dark") {
-    /** @type {typeof colors} */
-    const darkColors = { ...colors };
-    Object.entries(colors).forEach(([name, val]) => {
-      if (name === "black") {
-        darkColors.white = `${val}`;
-      } else if (name === "white") {
-        darkColors.black = `${val}`;
-      } else {
-        darkColors[name] = [...val].reverse();
-      }
-    });
-    return darkColors;
-  } else {
-    return colors;
-  }
+  // Deprecated: use getPalette(style).scale instead
+  return getPalette(style).scale;
 }
 
 function alpha(color, alpha) {

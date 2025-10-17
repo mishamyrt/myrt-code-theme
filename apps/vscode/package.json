@@ -1,0 +1,53 @@
+{
+  "name": "myrt-vscode-theme",
+  "displayName": "Myrt Theme",
+  "description": "Myrt theme for VS Code",
+  "version": "0.1.0",
+  "publisher": "Mikhael Khrustik",
+  "license": "MIT",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#1b1f23",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mishamyrt/myrt-vscode-theme"
+  },
+  "bugs": {
+    "url": "https://github.com/mishamyrt/myrt-vscode-theme/issues"
+  },
+  "engines": {
+    "vscode": "^1.43.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "myrt",
+    "light",
+    "dark"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Myrt Light",
+        "uiTheme": "vs",
+        "path": "./dist/light.json"
+      },
+      {
+        "label": "Myrt Dark",
+        "uiTheme": "vs-dark",
+        "path": "./dist/dark.json"
+      }
+    ]
+  },
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "*"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

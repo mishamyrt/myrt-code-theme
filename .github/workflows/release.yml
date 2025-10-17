@@ -6,7 +6,7 @@ on:
 jobs:
   release:
     name: Final
-    if: ${{ github.repository == 'primer/github-vscode-theme' }}
+    if: ${{ github.repository == 'mishamyrt/myrt-vscode-theme' }}
 
     runs-on: ubuntu-latest
     steps:

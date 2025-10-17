@@ -1,48 +1,10 @@
 {
-  "name": "myrt-vscode-theme",
+  "name": "myrt-theme",
   "displayName": "Myrt Theme",
-  "description": "Myrt theme for VS Code",
-  "version": "0.1.0",
+  "version": "0.0.0",
+  "private": true,
   "publisher": "Mikhael Khrustik",
   "license": "MIT",
-  "icon": "icon.png",
-  "galleryBanner": {
-    "color": "#1b1f23",
-    "theme": "dark"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mishamyrt/myrt-vscode-theme"
-  },
-  "bugs": {
-    "url": "https://github.com/mishamyrt/myrt-vscode-theme/issues"
-  },
-  "engines": {
-    "vscode": "^1.43.0"
-  },
-  "categories": [
-    "Themes"
-  ],
-  "keywords": [
-    "theme",
-    "myrt",
-    "light",
-    "dark"
-  ],
-  "contributes": {
-    "themes": [
-      {
-        "label": "Myrt Light",
-        "uiTheme": "vs",
-        "path": "./themes/light.json"
-      },
-      {
-        "label": "Myrt Dark",
-        "uiTheme": "vs-dark",
-        "path": "./themes/dark.json"
-      }
-    ]
-  },
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.1",
     "@changesets/cli": "^2.17.0",
@@ -52,18 +14,7 @@
     "vsce": "^2.15.0"
   },
   "scripts": {
-    "start": "nodemon --watch src src/index.js",
-    "build": "node src/index.js && mkdir -p build",
-    "build-extension": "terser src/extension.js --compress --mangle toplevel --output extension.js",
-    "package": "vsce package --allow-star-activation -o ./build/myrt-vscode-theme.vsix",
-    "prepublishOnly": "npm run build && vsce publish",
+    "build": "node build.js",
     "release": "changeset publish"
-  },
-  "main": "./extension.js",
-  "activationEvents": [
-    "*"
-  ],
-  "publishConfig": {
-    "access": "public"
   }
 }

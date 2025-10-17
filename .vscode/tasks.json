@@ -18,7 +18,7 @@
       "group": "build",
       "problemMatcher": [],
       "label": "npm: build",
-      "detail": "node src/index.js"
+      "detail": "pnpm build"
     }
   ]
 }

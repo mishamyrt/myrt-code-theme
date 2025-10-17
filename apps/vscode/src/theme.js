@@ -546,7 +546,11 @@ function getTheme({ style, name }) {
           "punctuation.definition.typeparameters",
           "punctuation.separator.comma",
           "punctuation.definition.table.inline.toml",
-          "punctuation.definition.markdown"
+          "punctuation.definition.markdown",
+          "punctuation.semi",
+          "punctuation.comma",
+          "keyword.operator.key-value.rust",
+          "punctuation.brackets.angle",
         ],
         settings: {
           foreground: tokens.syntax.punctuation,
@@ -555,17 +559,17 @@ function getTheme({ style, name }) {
       {
         scope: "punctuation.definition.heading",
         settings: {
-            fontStyle: "regular",
-            foreground: tokens.syntax.punctuation,
+          fontStyle: "regular",
+          foreground: tokens.syntax.punctuation,
         },
       },
       {
         scope: "markup.fenced_code.block.markdown",
         settings: {
-            foreground: pick({
-                light: colors.gray[7],
-                dark: colors.gray[6],
-            }),
+          foreground: pick({
+            light: colors.gray[7],
+            dark: colors.gray[6],
+          }),
         },
       },
       {
@@ -975,9 +979,9 @@ function getTheme({ style, name }) {
       },
       {
         scope: [
-            "support.type.property-name.toml",
-            "support.type.property-name.array.toml",
-            "support.type.property-name.table.toml"
+          "support.type.property-name.toml",
+          "support.type.property-name.array.toml",
+          "support.type.property-name.table.toml",
         ],
         settings: {
           foreground: colors.green[6],
@@ -1099,7 +1103,7 @@ function getTheme({ style, name }) {
           "source.json meta.mapping.key string.quoted.single.json punctuation.definition.string.end",
           "support.type.property-name.json punctuation.definition.string",
           "punctuation.section.angle-brackets",
-          "punctuation.eq.toml"
+          "punctuation.eq.toml",
         ],
         settings: {
           foreground: pick({ light: colors.gray[5], dark: colors.gray[4] }),
@@ -1180,12 +1184,6 @@ function getTheme({ style, name }) {
         scope: "keyword.other.crate.rust",
         settings: {
           foreground: colors.red[6],
-        },
-      },
-      {
-        scope: "meta.function.call.rust variable.other",
-        settings: {
-          foreground: colors.purple[6],
         },
       },
     ],

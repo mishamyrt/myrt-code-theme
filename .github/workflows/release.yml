@@ -1,38 +1,85 @@
 name: Release
 on:
   push:
-    branches:
-      - 'main'
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
 jobs:
   release:
-    name: Final
-    if: ${{ github.repository == 'mishamyrt/myrt-vscode-theme' }}
-
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
-          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
           fetch-depth: 0
-          persist-credentials: false
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 14.x
+          node-version: '20'
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
 
       - name: Install dependencies
-        run: yarn
+        run: pnpm install --frozen-lockfile
 
-      - name: Create release pull request or publish to npm
-        id: changesets
-        uses: changesets/action@master
-        with:
-          title: Release Tracking
-          # This expects you to have a script called release which does a build for your packages and calls changeset publish
-          publish: yarn release
+      - name: Build
+        run: pnpm build
+
+      - name: Archive VSCode dist
+        run: zip -r dist-vscode-${GITHUB_REF_NAME}.zip dist/vscode
+
+      - name: Archive Ghostty dist
+        run: zip -r dist-ghostty-${GITHUB_REF_NAME}.zip dist/ghostty
+
+      - name: Extract release notes from CHANGELOG.md
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const tag = process.env.TAG;
+          let text = '';
+          try {
+            text = fs.readFileSync('CHANGELOG.md', 'utf8');
+          } catch (e) {
+            fs.writeFileSync('RELEASE_NOTES.md', `Release ${tag}`);
+            process.exit(0);
+          }
+          const lines = text.split('\n');
+          let start = -1;
+          for (let i = 0; i < lines.length; i++) {
+            const l = lines[i].trim();
+            if (l.startsWith('##') && l.includes(tag)) { start = i; break; }
+          }
+          if (start === -1) {
+            // Fallback: first version section or whole file
+            start = lines.findIndex(l => l.trim().startsWith('##'));
+            if (start === -1) start = 0;
+          }
+          let end = lines.length;
+          for (let i = start + 1; i < lines.length; i++) {
+            if (lines[i].trim().startsWith('## ')) { end = i; break; }
+          }
+          const body = lines.slice(start, end).join('\n').trim();
+          fs.writeFileSync('RELEASE_NOTES.md', body || `Release ${tag}`);
+          NODE
         env:
-          GITHUB_TOKEN: ${{ secrets.GPR_AUTH_TOKEN_SHARED }}
+          TAG: ${{ github.ref_name }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          body_path: RELEASE_NOTES.md
+          files: |
+            dist-vscode-${{ github.ref_name }}.zip
+            dist-ghostty-${{ github.ref_name }}.zip
+
+      - name: Publish VSIX to Marketplace
+        run: pnpm exec vsce publish --packagePath dist/vscode/myrt-vscode-theme.vsix --skip-duplicate
+        env:
           VSCE_PAT: ${{ secrets.VSCE_PUBLISHER_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN_SHARED }}

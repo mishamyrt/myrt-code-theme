@@ -55,7 +55,7 @@ function isSemanticDisabled(languageId) {
  * @returns {boolean} Whether at least one language still needs an update
  */
 function needsUpdate(languages) {
-  return languages.some(isSemanticDisabled);
+  return languages.some((lang) => !isSemanticDisabled(lang));
 }
 
 /**
@@ -130,7 +130,6 @@ function activate(context) {
       event.affectsConfiguration("window.autoDetectColorScheme")
     ) {
       setTimeout(() => {
-        checkAndApplySemanticHighlightingSettings();
         maybePromptAndApply(context);
       }, 100);
     }

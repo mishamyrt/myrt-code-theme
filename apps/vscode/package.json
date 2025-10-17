@@ -2,7 +2,7 @@
   "name": "myrt-vscode-theme",
   "displayName": "Myrt Theme",
   "description": "Myrt theme for VS Code",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "Myrt",
   "license": "MIT",
   "icon": "icon.png",

@@ -144,6 +144,7 @@ function getPalette(style) {
         default: style === "light" ? s.gray[7] : s.gray[6],
         muted: s.gray[5],
         subtle: s.gray[4],
+        cursor: s.blue[7],
         workbench: style === "light" ? s.gray[8] : s.gray[7],
       },
       border: {
@@ -343,6 +344,25 @@ function getPalette(style) {
         buttonHoverBg: s.gray[2],
       },
     },
+    ansi: {
+        black: style === "light" ? s.gray[9] : s.gray[3],
+        brightBlack: style === "light" ? s.gray[4] : s.gray[5],
+        red: s.red[6],
+        brightRed: s.red[7],
+        green: s.green[5],
+        brightGreen: s.green[6],
+        yellow: style === "light" ? s.yellow[7] : s.yellow[6],
+        brightYellow: style === "light" ? s.yellow[8] : s.yellow[6],
+        blue: s.blue[6],
+        brightBlue: s.blue[7],
+        magenta: s.purple[6],
+        brightMagenta: s.purple[7],
+        white: style === "light" ? s.gray[5] : s.gray[6],
+        brightWhite: style === "light" ? s.gray[3] : s.gray[9],
+        // Custom picked
+        cyan: style === "light" ? "#1b7c83" : "#39c5cf",
+        brightCyan: style === "light" ? "#3192aa" : "#56d4dd",
+    }
   };
 
   const fn = {
@@ -358,6 +378,17 @@ function getPalette(style) {
     },
     alpha(color, a) {
       return chroma(color).alpha(a).hex();
+    },
+    flatten(background, foreground) {
+        const fg = chroma(foreground).rgba();
+        const fgAlpha = fg[3];
+        const bg = chroma(background).rgba();
+
+        const r = Math.round(fg[0] * fgAlpha + bg[0] * (1 - fgAlpha));
+        const g = Math.round(fg[1] * fgAlpha + bg[1] * (1 - fgAlpha));
+        const b = Math.round(fg[2] * fgAlpha + bg[2] * (1 - fgAlpha));
+        
+        return chroma(r, g, b).hex();
     },
   };
 

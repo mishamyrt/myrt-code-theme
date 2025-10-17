@@ -3,7 +3,7 @@
 Fine-tuned legacy GitHub theme for Visual Studio Code. Contains many improvements for comfortable work with code for many hours. Best used with [Lilex font](https://github.com/mishamyrt/Lilex).
 
 <p align="center">
-    <img src="preview.png" alt="Myrt VS Code theme" width="600">
+    <img src="https://raw.githubusercontent.com/mishamyrt/myrt-vscode-theme/main/apps/vscode/preview.png" alt="Myrt VS Code theme" width="600">
 </p>
 
 ## Languages support

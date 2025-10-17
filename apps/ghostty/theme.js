@@ -1,22 +1,14 @@
 const { getPalette } = require("../../common/colors");
-const chroma = require("chroma-js");
 
 function getTheme(style) {
   const { tokens, fn } = getPalette(style);
   
   const selectionBackground = fn.flatten(tokens.ui.bg.canvas, tokens.component.editor.selectionBg);
-  //   const background = tokens.ui.bg.canvas;
-  //   const foreground = tokens.ui.fg.default;
-  //   const cursorColor = tokens.ui.fg.default;
-  //   const cursorText = tokens.ui.fg.default;
-  //   const selectionBackground = tokens.ui.bg.subtle;
-  //   const selectionForeground = tokens.ui.fg.default;
-  //   const palette = tokens.palette;
   return `
+window-colorspace = srgb
 background = ${tokens.ui.bg.canvas}
 foreground = ${tokens.ui.fg.default}
-cursor-color = ${tokens.component.terminal.cursorBg}
-cursor-text = ${tokens.component.terminal.cursorFg}
+cursor-color = ${tokens.component.terminal.cursorFg}
 selection-background = ${selectionBackground}
 selection-foreground = ${tokens.ui.fg.default}
 palette = 0= ${tokens.ansi.black}

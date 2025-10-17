@@ -4,16 +4,12 @@ const path = require("node:path");
 const getTheme = require("./theme");
 
 const THEME_DIR = __dirname;
-const DIST_DIR = path.join(THEME_DIR, "dist");
 
-async function build() {
-  if (!existsSync(DIST_DIR)) {
-    await mkdir(DIST_DIR);
-  }
+async function build(outputDir) {
   const darkTheme = getTheme("dark");
   const lightTheme = getTheme("light");
-  await writeFile(path.join(DIST_DIR, "myrt-dark.conf"), darkTheme);
-  await writeFile(path.join(DIST_DIR, "myrt-light.conf"), lightTheme);
+  await writeFile(path.join(outputDir, "myrt-dark"), darkTheme);
+  await writeFile(path.join(outputDir, "myrt-light"), lightTheme);
 }
 
 module.exports = build;

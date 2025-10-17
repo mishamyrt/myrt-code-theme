@@ -12,6 +12,7 @@ const getTheme = require("./src/theme");
 
 const THEME_DIR = __dirname;
 const DIST_DIR = path.join(THEME_DIR, "dist");
+const PACKAGE_NAME = "myrt-vscode-theme.vsix";
 
 async function buildPatcher() {
   const inputPath = path.join(THEME_DIR, "src", "settings_patcher.js");
@@ -59,7 +60,7 @@ async function copyDocs() {
 }
 
 async function buildPackage() {
-  const outputPath = path.join(THEME_DIR, "dist", "myrt-vscode-theme.vsix");
+  const outputPath = path.join(THEME_DIR, "dist", PACKAGE_NAME);
   const result = await exec(
     `vsce package --allow-star-activation -o ${outputPath}`,
     {
@@ -72,13 +73,18 @@ async function buildPackage() {
   return outputPath;
 }
 
-async function build() {
+async function build(outputDir) {
   if (!existsSync(DIST_DIR)) {
     await mkdir(DIST_DIR);
   }
 
   await Promise.all([buildPatcher(), buildTheme(), copyDocs()]);
   await buildPackage();
+
+  await copyFile(
+    path.join(DIST_DIR, PACKAGE_NAME),
+    path.join(outputDir, PACKAGE_NAME)
+  );
 }
 
 module.exports = build;

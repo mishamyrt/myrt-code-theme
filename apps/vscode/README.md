@@ -31,3 +31,4 @@ Myrt theme provides first-class support for the following languages:
 3. Then [select a theme](https://code.visualstudio.com/docs/getstarted/themes#_selecting-the-color-theme):
 - `Myrt Light`
 - `Myrt Dark`
+4. Confirm to disable semantic highlighting for the some languages to improve syntax highlighting.

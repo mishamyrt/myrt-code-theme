@@ -1,3 +1,4 @@
 /src/
 /dist/*.vsix
 .gitignore
+preview.png

@@ -55,7 +55,6 @@ async function buildTheme() {
 }
 
 async function copyDocs() {
-  await copyFile("README.md", path.join(THEME_DIR, "README.md"));
   await copyFile("LICENSE", path.join(THEME_DIR, "LICENSE"));
 }
 

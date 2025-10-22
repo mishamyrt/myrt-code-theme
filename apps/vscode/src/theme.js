@@ -443,6 +443,7 @@ function getTheme({ style, name }) {
           "support.function",
           "entity.name.function.templated",
           "entity.name.function.member.static",
+          "entity.name.command.shell",
         ],
         settings: {
           foreground: tokens.syntax.function,

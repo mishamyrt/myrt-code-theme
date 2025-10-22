@@ -148,7 +148,7 @@ function getPalette(style) {
         workbench: style === "light" ? s.gray[8] : s.gray[7],
       },
       border: {
-        default: style === "light" ? s.gray[2] : s.white,
+        default: style === "light" ? s.gray[2] : s.gray[1],
         subtle: s.gray[2],
       },
     },
@@ -185,7 +185,7 @@ function getPalette(style) {
       propertyName: s.blue[6],
       support: s.blue[6],
       string: style === "light" ? s.blue[8] : "#9ecbff",
-      punctuation: style === "light" ? s.gray[5] : s.gray[4],
+      punctuation: style === "light" ? s.gray[4] : s.gray[4],
       regexp: s.blue[8],
       invalid: s.red[7],
       muted: s.gray[6],
@@ -197,7 +197,7 @@ function getPalette(style) {
         activeFg: undefined, // alias to ui.fg.workbench (resolved in theme)
         inactiveBg: style === "light" ? s.gray[1] : "#1f2428",
         inactiveFg: s.gray[5],
-        border: style === "light" ? s.gray[2] : s.white,
+        border: style === "light" ? s.gray[4] : s.white,
       },
       activityBar: {
         bg: style === "light" ? s.white : s.gray[0],
@@ -273,7 +273,7 @@ function getPalette(style) {
       },
       list: {
         hoverBg: style === "light" ? "#ebf0f4" : "#282e34",
-        inactiveSelBg: style === "light" ? "#e8eaed" : "#282e34",
+        inactiveSelectionBackground: style === "light" ? "#e8eaed" : "#282e34",
         activeSelBg: style === "light" ? "#e2e5e9" : "#39414a",
         inactiveFocusBg: style === "light" ? s.blue[1] : "#1d2d3e",
         focusBg: style === "light" ? "#cce5ff" : s.blue[2],
@@ -283,11 +283,11 @@ function getPalette(style) {
         bg: style === "light" ? s.white : s.gray[0],
         lineHighlightBg: style === "light" ? s.gray[1] : "#2b3036",
         lineNumberFg: style === "light" ? "#1b1f234d" : s.gray[2],
-        indentGuideBg: style === "light" ? "#eff2f6" : s.gray[1],
+        indentGuideBg: style === "light" ? chroma(s.gray[2]).alpha(0.5).hex() : s.gray[1],
         indentGuideActiveBg: style === "light" ? "#d7dbe0" : s.gray[2],
         inactiveSelectionBg:
           style === "light"
-            ? chroma(s.blue[5]).alpha(0.9).hex()
+            ? chroma(s.blue[5]).alpha(0.09).hex()
             : chroma(s.blue[5]).alpha(0.15).hex(),
         selectionBg:
           style === "light"
@@ -299,13 +299,12 @@ function getPalette(style) {
         findMatchBg: style === "light" ? s.yellow[4] : "#ffd33d44",
         findMatchHighlightBg: style === "light" ? "#ffdf5d66" : "#ffd33d22",
         linkedEditingBg:
-          style === "light"
-            ? "#0366d611"
-            : chroma(s.blue[6]).alpha(0.32).hex(),
+          style === "light" ? "#0366d611" : chroma(s.blue[6]).alpha(0.32).hex(),
         wordHighlightBg: style === "light" ? "#34d05800" : "#17E5E600",
         wordHighlightStrongBg: style === "light" ? "#34d05800" : "#17E5E600",
         wordHighlightBorder: style === "light" ? "#24943e99" : "#17E5E699",
-        wordHighlightStrongBorder: style === "light" ? "#24943e50" : "#17E5E666",
+        wordHighlightStrongBorder:
+          style === "light" ? "#24943e50" : "#17E5E666",
         bracketMatchBg: style === "light" ? "#34d05840" : "#17E5E650",
         bracketMatchBorder: style === "light" ? "#34d05800" : "#17E5E600",
       },
@@ -345,24 +344,24 @@ function getPalette(style) {
       },
     },
     ansi: {
-        black: style === "light" ? s.gray[9] : s.gray[3],
-        brightBlack: style === "light" ? s.gray[4] : s.gray[5],
-        red: s.red[6],
-        brightRed: s.red[7],
-        green: s.green[5],
-        brightGreen: s.green[6],
-        yellow: style === "light" ? s.yellow[7] : s.yellow[6],
-        brightYellow: style === "light" ? s.yellow[8] : s.yellow[6],
-        blue: s.blue[6],
-        brightBlue: s.blue[7],
-        magenta: s.purple[6],
-        brightMagenta: s.purple[7],
-        white: style === "light" ? s.gray[5] : s.gray[6],
-        brightWhite: style === "light" ? s.gray[3] : s.gray[9],
-        // Custom picked
-        cyan: style === "light" ? "#1b7c83" : "#39c5cf",
-        brightCyan: style === "light" ? "#3192aa" : "#56d4dd",
-    }
+      black: style === "light" ? s.gray[9] : s.gray[3],
+      brightBlack: style === "light" ? s.gray[4] : s.gray[5],
+      red: s.red[6],
+      brightRed: s.red[7],
+      green: s.green[5],
+      brightGreen: s.green[6],
+      yellow: style === "light" ? s.yellow[7] : s.yellow[6],
+      brightYellow: style === "light" ? s.yellow[8] : s.yellow[6],
+      blue: s.blue[6],
+      brightBlue: s.blue[7],
+      magenta: s.purple[6],
+      brightMagenta: s.purple[7],
+      white: style === "light" ? s.gray[5] : s.gray[6],
+      brightWhite: style === "light" ? s.gray[3] : s.gray[9],
+      // Custom picked
+      cyan: style === "light" ? "#1b7c83" : "#39c5cf",
+      brightCyan: style === "light" ? "#3192aa" : "#56d4dd",
+    },
   };
 
   const fn = {
@@ -372,7 +371,10 @@ function getPalette(style) {
           throw new Error(`Invalid color: ${hex}`);
         }
         const [h, s_, l] = chroma(hex).hsl();
-        return chroma.hsl(h, s_, 1 - l).hex().toLowerCase();
+        return chroma
+          .hsl(h, s_, 1 - l)
+          .hex()
+          .toLowerCase();
       }
       return hex;
     },
@@ -380,15 +382,15 @@ function getPalette(style) {
       return chroma(color).alpha(a).hex();
     },
     flatten(background, foreground) {
-        const fg = chroma(foreground).rgba();
-        const fgAlpha = fg[3];
-        const bg = chroma(background).rgba();
+      const fg = chroma(foreground).rgba();
+      const fgAlpha = fg[3];
+      const bg = chroma(background).rgba();
 
-        const r = Math.round(fg[0] * fgAlpha + bg[0] * (1 - fgAlpha));
-        const g = Math.round(fg[1] * fgAlpha + bg[1] * (1 - fgAlpha));
-        const b = Math.round(fg[2] * fgAlpha + bg[2] * (1 - fgAlpha));
-        
-        return chroma(r, g, b).hex();
+      const r = Math.round(fg[0] * fgAlpha + bg[0] * (1 - fgAlpha));
+      const g = Math.round(fg[1] * fgAlpha + bg[1] * (1 - fgAlpha));
+      const b = Math.round(fg[2] * fgAlpha + bg[2] * (1 - fgAlpha));
+
+      return chroma(r, g, b).hex();
     },
   };
 

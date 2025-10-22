@@ -21,6 +21,7 @@ Myrt theme provides first-class support for the following languages:
 - JSON
 - YAML
 - TOML
+- Protobuf
 - SCSS / CSS
 - sh / bash
 

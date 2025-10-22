@@ -501,6 +501,7 @@ function getTheme({ style, name }) {
           "source.cpp keyword.other",
           "variable.language.self.rust",
           "source.rust keyword.other",
+          "keyword.proto"
         ],
         settings: {
           fontStyle: "italic",

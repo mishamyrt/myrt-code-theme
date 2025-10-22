@@ -553,6 +553,7 @@ function getTheme({ style, name }) {
           "punctuation.comma",
           "keyword.operator.key-value.rust",
           "punctuation.brackets.angle",
+          "punctuation.separator"
         ],
         settings: {
           foreground: tokens.syntax.punctuation,
@@ -1188,6 +1189,12 @@ function getTheme({ style, name }) {
           foreground: colors.red[6],
         },
       },
+      {
+        scope: "constant.character.escape",
+        settings: {
+          foreground: colors.orange[6],
+        },
+      }
     ],
     semanticTokenColors: {
       typeParameter: colors.orange[6],

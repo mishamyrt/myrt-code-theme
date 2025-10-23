@@ -283,7 +283,8 @@ function getPalette(style) {
         bg: style === "light" ? s.white : s.gray[0],
         lineHighlightBg: style === "light" ? s.gray[1] : "#2b3036",
         lineNumberFg: style === "light" ? "#1b1f234d" : s.gray[2],
-        indentGuideBg: style === "light" ? chroma(s.gray[2]).alpha(0.5).hex() : s.gray[1],
+        indentGuideBg:
+          style === "light" ? chroma(s.gray[2]).alpha(0.5).hex() : s.gray[1],
         indentGuideActiveBg: style === "light" ? "#d7dbe0" : s.gray[2],
         inactiveSelectionBg:
           style === "light"
@@ -341,6 +342,12 @@ function getPalette(style) {
       welcome: {
         buttonBg: s.gray[1],
         buttonHoverBg: s.gray[2],
+      },
+      popover: {
+        shadow:
+          style === "light"
+            ? chroma("#000").alpha(0.08).hex()
+            : chroma("#000").alpha(0.15).hex(),
       },
     },
     ansi: {

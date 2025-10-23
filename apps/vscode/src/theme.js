@@ -108,7 +108,8 @@ function getTheme({ style, name }) {
       "list.inactiveSelectionForeground": workbenchForeground,
       "list.activeSelectionForeground": workbenchForeground,
       "list.hoverBackground": tokens.component.list.hoverBg,
-      "list.inactiveSelectionBackground": tokens.component.list.inactiveSelectionBackground,
+      "list.inactiveSelectionBackground":
+        tokens.component.list.inactiveSelectionBackground,
       "list.activeSelectionBackground": tokens.component.list.activeSelBg,
       "list.inactiveFocusBackground": tokens.component.list.inactiveFocusBg,
       "list.focusBackground": tokens.component.list.focusBg,
@@ -361,6 +362,7 @@ function getTheme({ style, name }) {
       "welcomePage.buttonBackground": tokens.component.welcome.buttonBg,
       "welcomePage.buttonHoverBackground":
         tokens.component.welcome.buttonHoverBg,
+      "widget.shadow": tokens.component.popover.shadow,
     },
     semanticHighlighting: true,
     tokenColors: [
@@ -501,7 +503,7 @@ function getTheme({ style, name }) {
           "source.cpp keyword.other",
           "variable.language.self.rust",
           "source.rust keyword.other",
-          "keyword.proto"
+          "keyword.proto",
         ],
         settings: {
           fontStyle: "italic",
@@ -553,7 +555,7 @@ function getTheme({ style, name }) {
           "punctuation.comma",
           "keyword.operator.key-value.rust",
           "punctuation.brackets.angle",
-          "punctuation.separator"
+          "punctuation.separator",
         ],
         settings: {
           foreground: tokens.syntax.punctuation,
@@ -1194,7 +1196,7 @@ function getTheme({ style, name }) {
         settings: {
           foreground: colors.orange[6],
         },
-      }
+      },
     ],
     semanticTokenColors: {
       typeParameter: colors.orange[6],

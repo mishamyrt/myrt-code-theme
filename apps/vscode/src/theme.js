@@ -987,6 +987,7 @@ function getTheme({ style, name }) {
           "support.type.property-name.toml",
           "support.type.property-name.array.toml",
           "support.type.property-name.table.toml",
+          "keyword.other.definition.ini",
         ],
         settings: {
           foreground: colors.green[6],

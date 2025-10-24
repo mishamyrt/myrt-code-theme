@@ -1187,7 +1187,10 @@ function getTheme({ style, name }) {
         },
       },
       {
-        scope: "keyword.other.crate.rust",
+        scope: [
+          "keyword.other.crate.rust",
+          "support.function.target.PHONY.makefile",
+        ],
         settings: {
           foreground: colors.red[6],
         },

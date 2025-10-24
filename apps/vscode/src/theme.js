@@ -1202,14 +1202,17 @@ function getTheme({ style, name }) {
         },
       },
       {
-        scope: [
-            "entity.name.function.preprocessor",
-            "source.c entity.name.function.preprocessor",
-        ],
+        scope: "entity.name.function.preprocessor",
         settings: {
           foreground: colors.purple[7],
-        }
-      }
+        },
+      },
+      {
+        scope: "entity.other.attribute-name.pragma.preprocessor.cpp",
+        settings: {
+          foreground: colors.orange[6],
+        },
+      },
     ],
     semanticTokenColors: {
       typeParameter: colors.orange[6],

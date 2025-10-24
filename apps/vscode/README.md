@@ -32,7 +32,7 @@ Myrt theme provides first-class support for the following languages:
 - Protobuf
 - SCSS / CSS
 - sh / bash
-- Ini
+- INI
 - Makefile
 
 The other languages will also be highlighted, but there may be deviations from the original interpretations.

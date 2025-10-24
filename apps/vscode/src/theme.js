@@ -1201,6 +1201,15 @@ function getTheme({ style, name }) {
           foreground: colors.orange[6],
         },
       },
+      {
+        scope: [
+            "entity.name.function.preprocessor",
+            "source.c entity.name.function.preprocessor",
+        ],
+        settings: {
+          foreground: colors.purple[7],
+        }
+      }
     ],
     semanticTokenColors: {
       typeParameter: colors.orange[6],

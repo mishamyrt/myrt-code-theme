@@ -460,7 +460,6 @@ function getTheme({ style, name }) {
       {
         scope: "entity.other.attribute-name",
         settings: {
-          fontStyle: "italic",
           foreground: tokens.syntax.attribute,
         },
       },
@@ -471,7 +470,6 @@ function getTheme({ style, name }) {
           "entity.other.attribute-name.css",
         ],
         settings: {
-          fontStyle: "italic",
           foreground: colors.green[6],
         },
       },
@@ -480,10 +478,17 @@ function getTheme({ style, name }) {
           "entity.other.attribute-name.pseudo-class.css",
           "entity.other.pseudo-class.css",
           "entity.other.pseudo-element.css",
+          "entity.other.attribute-name.pseudo-element.css",
         ],
         settings: {
           fontStyle: "italic",
-          foreground: pick({ light: colors.purple[5], dark: colors.purple[6] }),
+          foreground: tokens.syntax.function,
+        },
+      },
+      {
+        scope: ["meta.selector.css"],
+        settings: {
+          foreground: tokens.syntax.function,
         },
       },
       {
@@ -648,7 +653,6 @@ function getTheme({ style, name }) {
           "source.less variable.declaration.less",
         ],
         settings: {
-          fontStyle: "italic",
           foreground: colors.orange[6],
         },
       },
@@ -863,6 +867,19 @@ function getTheme({ style, name }) {
         settings: {
           foreground: colors.gray[6],
         },
+      },
+      {
+        scope: ["support.type.property-name.css", "meta.property-name.scss"],
+        settings: {
+          foreground: tokens.syntax.word,
+        },
+      },
+      {
+        scope: "support.type.vendored.property-name.css",
+        settings: {
+            fontStyle: "italic",
+            foreground: tokens.syntax.word,
+        }
       },
       {
         scope: "source.json meta.mapping.key string",

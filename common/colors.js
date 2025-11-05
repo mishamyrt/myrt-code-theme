@@ -189,6 +189,7 @@ function getPalette(style) {
       regexp: s.blue[8],
       invalid: s.red[7],
       muted: s.gray[6],
+      word: style === "light" ? s.white : s.black,
     },
 
     component: {
@@ -308,6 +309,10 @@ function getPalette(style) {
           style === "light" ? "#24943e50" : "#17E5E666",
         bracketMatchBg: style === "light" ? "#34d05840" : "#17E5E650",
         bracketMatchBorder: style === "light" ? "#34d05800" : "#17E5E600",
+        ghostTextBg:
+          style === "light"
+            ? chroma(s.blue[5]).alpha(0.12).hex()
+            : chroma(s.green[5]).alpha(0.1).hex(),
       },
       diffEditor: {
         insertedBg: style === "light" ? "#34d05822" : "#28a74530",

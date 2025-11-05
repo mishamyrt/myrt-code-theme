@@ -215,7 +215,8 @@ function getTheme({ style, name }) {
       }),
       "editorCursor.foreground": tokens.ui.fg.cursor,
       "editorError.foreground": colors.red[6],
-      "editorWarning.foreground": colors.yellow[6],
+      "editorWarning.foreground": colors.blue[6],
+      "editorGhostText.background": tokens.component.editor.ghostTextBg,
 
       "editor.findMatchBackground": tokens.component.editor.findMatchBg,
       "editor.findMatchHighlightBackground":
@@ -506,7 +507,6 @@ function getTheme({ style, name }) {
           "keyword.type.go",
           "keyword.control",
           "source.cpp keyword.other",
-          "variable.language.self.rust",
           "source.rust keyword.other",
           "keyword.proto",
         ],
@@ -877,9 +877,9 @@ function getTheme({ style, name }) {
       {
         scope: "support.type.vendored.property-name.css",
         settings: {
-            fontStyle: "italic",
-            foreground: tokens.syntax.word,
-        }
+          fontStyle: "italic",
+          foreground: tokens.syntax.word,
+        },
       },
       {
         scope: "source.json meta.mapping.key string",
@@ -1210,6 +1210,17 @@ function getTheme({ style, name }) {
         ],
         settings: {
           foreground: colors.red[6],
+        },
+      },
+      {
+        scope: [
+          "variable.language.self.rust",
+          "variable.language.this.js",
+          "variable.language.this.ts",
+        ],
+        settings: {
+          foreground: tokens.syntax.variable,
+          fontStyle: "italic",
         },
       },
       {

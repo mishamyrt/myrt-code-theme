@@ -189,7 +189,7 @@ function getPalette(style) {
       regexp: s.blue[8],
       invalid: s.red[7],
       muted: s.gray[6],
-      word: style === "light" ? s.white : s.black,
+      word: style === "light" ? s.black : s.white,
     },
 
     component: {

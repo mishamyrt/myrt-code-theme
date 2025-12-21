@@ -516,6 +516,12 @@ function getTheme({ style, name }) {
         },
       },
       {
+        scope: ["keyword.control.flow.block-scalar.literal.yaml"],
+        settings: {
+            fontStyle: "regular",
+        },
+      },
+      {
         scope: ["storage.modifier"],
         settings: {
           fontStyle: "italic",

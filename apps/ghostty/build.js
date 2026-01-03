@@ -1,9 +1,6 @@
-const { writeFile, mkdir } = require("node:fs/promises");
-const { existsSync } = require("node:fs");
+const { writeFile } = require("node:fs/promises");
 const path = require("node:path");
 const getTheme = require("./theme");
-
-const THEME_DIR = __dirname;
 
 async function build(outputDir) {
   const darkTheme = getTheme("dark");

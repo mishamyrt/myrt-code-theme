@@ -516,9 +516,19 @@ function getTheme({ style, name }) {
         },
       },
       {
+        scope: [
+          "storage.type.function.arrow.ts",
+          "storage.type.function.arrow.js",
+        ],
+        settings: {
+          fontStyle: "regular",
+          foreground: tokens.syntax.keyword,
+        },
+      },
+      {
         scope: ["keyword.control.flow.block-scalar.literal.yaml"],
         settings: {
-            fontStyle: "regular",
+          fontStyle: "regular",
         },
       },
       {

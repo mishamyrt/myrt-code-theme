@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.3] - 2026-01-09
+
+### Bug Fixes
+
+- *(ghostty)* More visible cursor
+- Disable italic on yaml block flow start
+- Correctly display css in html
+- *(vscode)* Css
+- *(ghostty)* Correctly draw cursor
+- *(vscode)* Use regular for ts/js arrows
+
+### Documentation
+
+- Describe installation
+- Add app links
+- *(vscode)* Describe interpretation concepts
+
+### Features
+
+- Add TOML support
+- Improve markdown heading support
+- Gray out rust punctuation
+- *(vscode)* Mark shell command as function
+- Improve light theme
+- *(vscode)* Add proto support
+- *(vscode)* Tune json highlight
+- *(vscode)* Tune popover shadow
+- *(vscode)* Correctly highlight ini keys
+- *(vscode)* Threat makefile PHONY as keyword
+- *(vscode)* Highlight cpp macros
+- *(vscode)* Highlight cpp pragma
+- *(vscode)* Improve css highlighting
+- *(vscode)* Align rust, js and ts self/this to python
+
 ## [0.1.1] - 2025-10-17
 
 ### Bug Fixes

@@ -31,3 +31,4 @@ palette = 15= ${tokens.ansi.brightWhite}
 }
 
 module.exports = getTheme;
+

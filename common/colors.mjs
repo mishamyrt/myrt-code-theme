@@ -184,7 +184,7 @@ export function getPalette(style) {
       constant: s.blue[6],
       propertyName: s.blue[6],
       support: s.blue[6],
-      string: style === "light" ? s.blue[8] : "#9ecbff",
+      string: style === "light" ? s.blue[7] : "#9ecbff",
       punctuation: style === "light" ? s.gray[4] : s.gray[4],
       regexp: s.blue[8],
       invalid: s.red[7],

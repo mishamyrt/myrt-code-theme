@@ -763,7 +763,7 @@ export function getTheme({ style, name }) {
           font_weight: null,
         },
         string: {
-          color: pick({ light: primer.blue[8], dark: "#9ecbff" }),
+          color: tokens.syntax.string,
           background_color: null,
           font_style: null,
           font_weight: null,

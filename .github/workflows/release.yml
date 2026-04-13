@@ -2,7 +2,7 @@ name: Release
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 permissions:
   contents: write
@@ -12,17 +12,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: "25"
 
       - name: Set up pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
         with:
           version: 10
 
@@ -32,11 +32,11 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Archive VSCode dist
-        run: zip -r dist-vscode-${GITHUB_REF_NAME}.zip dist/vscode
-
-      - name: Archive Ghostty dist
-        run: zip -r dist-ghostty-${GITHUB_REF_NAME}.zip dist/ghostty
+      - name: Pack themes
+        run: |
+          zip -r dist-vscode-${GITHUB_REF_NAME}.zip dist/vscode
+          zip -r dist-ghostty-${GITHUB_REF_NAME}.zip dist/ghostty
+          zip -r dist-zed-${GITHUB_REF_NAME}.zip dist/zed
 
       - name: Extract release notes from CHANGELOG.md
         run: |
@@ -78,6 +78,7 @@ jobs:
           files: |
             dist-vscode-${{ github.ref_name }}.zip
             dist-ghostty-${{ github.ref_name }}.zip
+            dist-zed-${{ github.ref_name }}.zip
 
       - name: Publish VSIX to Marketplace
         run: pnpm exec vsce publish --packagePath dist/vscode/myrt-vscode-theme.vsix --skip-duplicate

@@ -1,6 +1,5 @@
 //@ts-check
-import { writeFile, rm, mkdir, copyFile } from "node:fs/promises";
-import { existsSync } from "node:fs";
+import { writeFile, mkdir, copyFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "url";
 
@@ -56,12 +55,5 @@ async function buildTheme(outputDir) {
  * @param {string} outputDir
  */
 export default async function build(outputDir) {
-  if (existsSync(outputDir)) {
-    await rm(outputDir, {
-      recursive: true,
-    });
-  }
-
-  await mkdir(outputDir);
   await Promise.all([buildTheme(outputDir), copyManifest(outputDir)]);
 }

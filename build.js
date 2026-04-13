@@ -4,12 +4,14 @@ const path = require("node:path");
 
 const buildVSCode = require("./apps/vscode/build");
 const buildGhostty = require("./apps/ghostty/build");
+const buildZed = require("./apps/zed/build");
 
 const OUTPUT_DIR = path.join(__dirname, "dist");
 
 const targets = {
   vscode: buildVSCode,
   ghostty: buildGhostty,
+  zed: buildZed,
 };
 
 async function build() {

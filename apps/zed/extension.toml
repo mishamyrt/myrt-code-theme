@@ -1,0 +1,7 @@
+id = "myrt-code-theme"
+name = "Myrt Code Theme"
+schema_version = 1
+version = "0.0.1"
+authors = ["Mikhael Khrustik <misha@myrt.co>"]
+description = "Zed theme for comfortable work with code for many hours."
+repository = "https://github.com/mishamyrt/myrt-code-theme"

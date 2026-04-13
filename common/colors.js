@@ -13,7 +13,7 @@ const colors = {
     "#586069",
     "#444d56",
     "#2f363d",
-    "#22272E",
+    "#24292E",
   ],
   blue: [
     "#f1f8ff",
@@ -179,7 +179,7 @@ function getPalette(style) {
       attribute: style === "light" ? s.purple[5] : s.purple[6],
       decorator: style === "light" ? s.purple[5] : s.purple[6],
       tag: s.green[6],
-      variable: s.orange[6],
+      variable: s.green[8],
       identifier: s.blue[6],
       constant: s.blue[6],
       propertyName: s.blue[6],

@@ -1,11 +1,13 @@
 //@ts-check
-const { writeFile, rm, mkdir, copyFile } = require("node:fs/promises");
-const { existsSync } = require("node:fs");
-const path = require("node:path");
+import { writeFile, rm, mkdir, copyFile } from "node:fs/promises";
+import { existsSync } from "node:fs";
+import { join, dirname } from "node:path";
+import { fileURLToPath } from "url";
 
-const getTheme = require("./src/theme");
+import { getTheme } from "./theme.mjs";
 
-const THEME_DIR = __dirname;
+const __filename = fileURLToPath(import.meta.url);
+const THEME_DIR = dirname(__filename);
 const MANIFEST_NAME = "extension.toml";
 
 /**
@@ -14,8 +16,8 @@ const MANIFEST_NAME = "extension.toml";
  */
 async function copyManifest(outputDir) {
   await copyFile(
-    path.join(THEME_DIR, MANIFEST_NAME),
-    path.join(outputDir, MANIFEST_NAME),
+    join(THEME_DIR, MANIFEST_NAME),
+    join(outputDir, MANIFEST_NAME),
   );
 }
 
@@ -40,11 +42,11 @@ async function buildTheme(outputDir) {
     themes: [darkTheme, lightTheme],
   };
 
-  const themesDir = path.join(outputDir, "themes");
+  const themesDir = join(outputDir, "themes");
 
   await mkdir(themesDir);
   await writeFile(
-    path.join(themesDir, "myrt-code.json"),
+    join(themesDir, "myrt-code.json"),
     JSON.stringify(themes, null, 2),
   );
 }
@@ -53,7 +55,7 @@ async function buildTheme(outputDir) {
  *
  * @param {string} outputDir
  */
-async function build(outputDir) {
+export default async function build(outputDir) {
   if (existsSync(outputDir)) {
     await rm(outputDir, {
       recursive: true,
@@ -63,5 +65,3 @@ async function build(outputDir) {
   await mkdir(outputDir);
   await Promise.all([buildTheme(outputDir), copyManifest(outputDir)]);
 }
-
-module.exports = build;

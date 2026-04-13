@@ -1,5 +1,5 @@
-const { getPalette, colors } = require("./colors");
-const chroma = require("chroma-js");
+import { getPalette } from "./colors.mjs";
+import chroma from "chroma-js";
 
 /**
  * @typedef { "light" | "dark" } Style
@@ -14,7 +14,7 @@ const chroma = require("chroma-js");
  *
  * @returns {string} The variant color
  */
-function getVariant(hex, style) {
+export function getVariant(hex, style) {
   if (style === "dark") {
     if (!chroma.valid(hex)) {
       throw new Error(`Invalid color: ${hex}`);
@@ -34,19 +34,13 @@ function getVariant(hex, style) {
  * The array of light to dark colors are reversed to auto-generate dark theme
  *
  * @param {Style} style - The style to get colors for
- * @returns {typeof colors} The colors for the given style
+ * @returns {typeof import("./colors.mjs").colors} The colors for the given style
  */
-function getColors(style) {
+export function getColors(style) {
   // Deprecated: use getPalette(style).scale instead
   return getPalette(style).scale;
 }
 
-function alpha(color, alpha) {
+export function alpha(color, alpha) {
   return chroma(color).alpha(alpha).hex();
 }
-
-module.exports = {
-  getColors,
-  getVariant,
-  alpha,
-};

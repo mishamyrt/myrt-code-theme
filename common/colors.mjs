@@ -1,6 +1,6 @@
-const chroma = require("chroma-js");
+import chroma from "chroma-js";
 
-const colors = {
+export const colors = {
   black: "#1b1f23",
   white: "#fff",
   gray: [
@@ -118,7 +118,7 @@ function resolveScaleByStyle(style) {
   return colors;
 }
 
-function getPalette(style) {
+export function getPalette(style) {
   const s = resolveScaleByStyle(style);
 
   const tokens = {
@@ -408,8 +408,3 @@ function getPalette(style) {
 
   return { scale: s, tokens, fn };
 }
-
-module.exports = {
-  colors,
-  getPalette,
-};

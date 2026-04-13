@@ -1,12 +1,15 @@
-const { mkdir, rm } = require("node:fs/promises");
-const { existsSync } = require("node:fs");
-const path = require("node:path");
+import { mkdir, rm } from "node:fs/promises";
+import { existsSync } from "node:fs";
+import { join, dirname } from "node:path";
+import { fileURLToPath } from "url";
 
-const buildVSCode = require("./apps/vscode/build");
-const buildGhostty = require("./apps/ghostty/build");
-const buildZed = require("./apps/zed/build");
+import buildVSCode from "./apps/vscode/build.mjs";
+import buildGhostty from "./apps/ghostty/build.mjs";
+import buildZed from "./apps/zed/build.mjs";
 
-const OUTPUT_DIR = path.join(__dirname, "dist");
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const OUTPUT_DIR = join(__dirname, "dist");
 
 const targets = {
   vscode: buildVSCode,
@@ -21,7 +24,7 @@ async function build() {
   await mkdir(OUTPUT_DIR);
 
   const tasks = Object.entries(targets).map(async ([name, build]) => {
-    const appOutputDir = path.join(OUTPUT_DIR, name);
+    const appOutputDir = join(OUTPUT_DIR, name);
     await mkdir(appOutputDir);
     await build(appOutputDir);
   });

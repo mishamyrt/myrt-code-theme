@@ -1,9 +1,12 @@
-const { getPalette } = require("../../common/colors");
+import { getPalette } from "../../common/colors.mjs";
 
-function getTheme(style) {
+export function getTheme(style) {
   const { tokens, fn } = getPalette(style);
-  
-  const selectionBackground = fn.flatten(tokens.ui.bg.canvas, tokens.component.editor.selectionBg);
+
+  const selectionBackground = fn.flatten(
+    tokens.ui.bg.canvas,
+    tokens.component.editor.selectionBg,
+  );
   return `
 window-colorspace = srgb
 background = ${tokens.ui.bg.canvas}
@@ -29,6 +32,3 @@ palette = 14= ${tokens.ansi.brightCyan}
 palette = 15= ${tokens.ansi.brightWhite}
 `.trimStart();
 }
-
-module.exports = getTheme;
-

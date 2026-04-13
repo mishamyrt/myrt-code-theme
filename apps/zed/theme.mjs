@@ -1,10 +1,10 @@
-const { getColors } = require("../../../common/utils");
-const { getPalette } = require("../../../common/colors");
-const chroma = require("chroma-js");
+import chroma from "chroma-js";
+import { getColors } from "../../common/utils.mjs";
+import { getPalette } from "../../common/colors.mjs";
 
 /**
  * @typedef {Object} ThemeOptions
- * @property {import("../../../common/utils").Style} style - The style of the theme
+ * @property {import("../../common/utils.mjs").Style} style - The style of the theme
  * @property {string} name - The name of the theme
  */
 
@@ -12,10 +12,10 @@ const chroma = require("chroma-js");
  * Get the theme for the given style and name
  * @param {ThemeOptions} options - The options for the theme
  */
-function getTheme({ style, name }) {
+export function getTheme({ style, name }) {
   /**
    * Usage: `pick({ light: "lightblue", dark: "darkblue" })`
-   * @param {import("../../../common/utils").Style} options - The options to pick from
+   * @param {import("../../common/utils.mjs").Style} options - The options to pick from
    * @returns {string} The picked color
    */
   const pick = (options) => options[style];
@@ -946,5 +946,3 @@ function getTheme({ style, name }) {
     },
   };
 }
-
-module.exports = getTheme;

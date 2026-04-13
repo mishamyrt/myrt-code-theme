@@ -179,7 +179,7 @@ export function getPalette(style) {
       attribute: style === "light" ? s.purple[5] : s.purple[6],
       decorator: style === "light" ? s.purple[5] : s.purple[6],
       tag: s.green[6],
-      variable: s.green[8],
+      variable: style === "light" ? s.orange[7] : s.orange[6],
       identifier: s.blue[6],
       constant: s.blue[6],
       propertyName: s.blue[6],

@@ -435,10 +435,6 @@ export function getTheme({ style, name }) {
           fontStyle: "regular",
         },
       },
-      //       {
-      //         scope: "variable.other.readwrite.ts
-      // ",
-      //       }
       {
         scope: ["entity.name.tag", "support.type.property-name.json"],
         settings: {
@@ -1288,12 +1284,6 @@ export function getTheme({ style, name }) {
           foreground: tokens.syntax.variable,
         },
       },
-      // {
-      //     scope: ,
-      //     settings: {
-      //         foreground: tokens.foreground,
-      //     },
-      // }
     ],
     semanticTokenColors: {
       typeParameter: colors.orange[6],

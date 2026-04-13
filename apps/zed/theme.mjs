@@ -1,27 +1,28 @@
+//@ts-check
 import chroma from "chroma-js";
 import { getColors } from "../../common/utils.mjs";
 import { getPalette } from "../../common/colors.mjs";
 
 /**
- * @typedef {Object} ThemeOptions
+ * @typedef {Object} ThemeParams
  * @property {import("../../common/utils.mjs").Style} style - The style of the theme
  * @property {string} name - The name of the theme
  */
 
 /**
  * Get the theme for the given style and name
- * @param {ThemeOptions} options - The options for the theme
+ * @param {ThemeParams} options - The options for the theme
  */
 export function getTheme({ style, name }) {
+  const primer = getColors(style);
+  const { tokens } = getPalette(style);
+
   /**
    * Usage: `pick({ light: "lightblue", dark: "darkblue" })`
-   * @param {import("../../common/utils.mjs").Style} options - The options to pick from
+   * @param {import("../../common/utils.mjs").ThemeOptions} options - The options to pick from
    * @returns {string} The picked color
    */
   const pick = (options) => options[style];
-
-  const primer = getColors(style);
-  const { tokens } = getPalette(style);
 
   const editorForeground = pick({
     light: primer.gray[9],
@@ -273,7 +274,7 @@ export function getTheme({ style, name }) {
       hidden: primer.gray[5],
       "hidden.background": null,
       "hidden.border": pick({ light: primer.gray[2], dark: primer.white }),
-      hint: primer.muted,
+      hint: pick({ light: primer.gray[5], dark: primer.gray[4] }),
       "hint.background": alpha(primer.gray[2], 0.2),
       "hint.border": pick({ light: primer.gray[2], dark: primer.white }),
       ignored: primer.gray[4],

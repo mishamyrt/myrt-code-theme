@@ -6,6 +6,10 @@ import chroma from "chroma-js";
  */
 
 /**
+ * @typedef {Record<Style, string>} ThemeOptions
+ */
+
+/**
  * Generate color variant by inverting
  * luminance in the  HSL representation
  *

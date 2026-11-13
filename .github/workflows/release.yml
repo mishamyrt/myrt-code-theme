@@ -34,9 +34,9 @@ jobs:
 
       - name: Pack themes
         run: |
-          zip -r dist-vscode-${GITHUB_REF_NAME}.zip dist/vscode
-          zip -r dist-ghostty-${GITHUB_REF_NAME}.zip dist/ghostty
-          zip -r dist-zed-${GITHUB_REF_NAME}.zip dist/zed
+          zip -r myrt-code-vscode.zip dist/vscode
+          zip -r myrt-code-ghostty.zip dist/ghostty
+          zip -r myrt-code-zed.zip dist/zed
 
       - name: Extract release notes from CHANGELOG.md
         run: |
@@ -76,9 +76,9 @@ jobs:
         with:
           body_path: RELEASE_NOTES.md
           files: |
-            dist-vscode-${{ github.ref_name }}.zip
-            dist-ghostty-${{ github.ref_name }}.zip
-            dist-zed-${{ github.ref_name }}.zip
+            myrt-code-vscode.zip
+            myrt-code-ghostty.zip
+            myrt-code-zed.zip
 
       - name: Publish VSIX to Marketplace
         run: pnpm exec vsce publish --packagePath dist/vscode/myrt-vscode-theme.vsix --skip-duplicate

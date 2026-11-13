@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.4] - 2026-11-13
+
+### Bug Fixes
+
+- *(zed)* Set disabled text color
+
+### Features
+
+- Add zed description
+
+## [0.2.0] - 2026-04-13
+
+### Bug Fixes
+
+- Improve light theme string readability
+- Tune special variable color
+- *(zed)* Gray out git hint
+
+### Features
+
+- *(vscode)* Tune swift
+- Tune bg color
+- Add Zed theme
+
+### Refactoring
+
+- Migrate to mjs
+- Clean up
+
+### Styling
+
+- Format
+
 ## [0.1.3] - 2026-01-09
 
 ### Bug Fixes

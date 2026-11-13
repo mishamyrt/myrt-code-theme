@@ -7,27 +7,24 @@ on:
 permissions:
   contents: write
 
+env:
+  NODE_VERSION: "26"
+  PNPM_VERSION: "12.18"
+
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v6
+      - name: Setup node
+        uses: pnpm/setup@v3.2.0
         with:
-          node-version: "25"
-
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v5
-        with:
-          version: 10
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+          runtime: node@${{ env.NODE_VERSION }}
+          version: ${{ env.PNPM_VERSION }}
 
       - name: Build
         run: pnpm build
@@ -40,39 +37,11 @@ jobs:
 
       - name: Extract release notes from CHANGELOG.md
         run: |
-          node - <<'NODE'
-          const fs = require('fs');
-          const tag = process.env.TAG;
-          let text = '';
-          try {
-            text = fs.readFileSync('CHANGELOG.md', 'utf8');
-          } catch (e) {
-            fs.writeFileSync('RELEASE_NOTES.md', `Release ${tag}`);
-            process.exit(0);
-          }
-          const lines = text.split('\n');
-          let start = -1;
-          for (let i = 0; i < lines.length; i++) {
-            const l = lines[i].trim();
-            if (l.startsWith('##') && l.includes(tag)) { start = i; break; }
-          }
-          if (start === -1) {
-            // Fallback: first version section or whole file
-            start = lines.findIndex(l => l.trim().startsWith('##'));
-            if (start === -1) start = 0;
-          }
-          let end = lines.length;
-          for (let i = start + 1; i < lines.length; i++) {
-            if (lines[i].trim().startsWith('## ')) { end = i; break; }
-          }
-          const body = lines.slice(start, end).join('\n').trim();
-          fs.writeFileSync('RELEASE_NOTES.md', body || `Release ${tag}`);
-          NODE
-        env:
-          TAG: ${{ github.ref_name }}
+          node scripts/get_notes.js ${{ github.ref_name }} > RELEASE_NOTES.md
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+        if: github.ref_type == 'tag'
+        uses: softprops/action-gh-release@v3.0.4
         with:
           body_path: RELEASE_NOTES.md
           files: |

@@ -79,8 +79,3 @@ jobs:
             myrt-code-vscode.zip
             myrt-code-ghostty.zip
             myrt-code-zed.zip
-
-      - name: Publish VSIX to Marketplace
-        run: pnpm exec vsce publish --packagePath dist/vscode/myrt-vscode-theme.vsix --skip-duplicate
-        env:
-          VSCE_PAT: ${{ secrets.VSCE_PUBLISHER_TOKEN }}

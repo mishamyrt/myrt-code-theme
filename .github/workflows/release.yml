@@ -1,8 +1,6 @@
 name: Release
 on:
   push:
-    tags:
-      - "v*"
 
 permissions:
   contents: write
@@ -35,7 +33,17 @@ jobs:
           zip -r myrt-code-ghostty.zip dist/ghostty
           zip -r myrt-code-zed.zip dist/zed
 
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: myrt-code-themes
+          path: |
+            myrt-code-vscode.zip
+            myrt-code-ghostty.zip
+            myrt-code-zed.zip
+
       - name: Extract release notes from CHANGELOG.md
+        if: github.ref_type == 'tag'
         run: |
           node scripts/get_notes.js ${{ github.ref_name }} > RELEASE_NOTES.md
 

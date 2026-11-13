@@ -68,7 +68,7 @@ export function getTheme({ style, name }) {
       text: pick({ light: primer.gray[7], dark: primer.gray[6] }),
       "text.muted": primer.gray[5],
       "text.placeholder": pick({ light: primer.gray[4], dark: primer.gray[5] }),
-      "text.disabled": null,
+      "text.disabled": primer.gray[4],
       "text.accent": pick({ light: primer.green[5], dark: primer.green[4] }),
       icon: null,
       "icon.muted": null,

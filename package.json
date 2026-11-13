@@ -7,11 +7,12 @@
   "type": "module",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^24.8.1",
-    "chroma-js": "3.1.2",
-    "nodemon": "^2.0.3",
-    "terser": "^5.44.0",
-    "vsce": "^2.15.0"
+    "@types/chroma-js": "^3.1.3",
+    "@types/node": "26.6.6",
+    "@vscode/vsce": "4.1.0",
+    "chroma-js": "3.3.0",
+    "nodemon": "3.1.14",
+    "terser": "5.51.2"
   },
   "scripts": {
     "build": "node build.mjs"
